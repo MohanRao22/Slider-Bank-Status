@@ -74,24 +74,51 @@ sliderParent.prepend(lastClone);
 
 // Getting the width of particular item
 
-let loopTime = 2000;
+let loopTime = 3000;
 let index = 1;
 const itemWidth = slideItems[index].clientWidth;
 console.log(itemWidth);
 
-document.onload = ()=>{
-    startSlideShow();
-}
+
+
+// start slide show function
+let interval_value;
 
 const startSlideShow = ()=>{
     // slideItems = document.querySelectorAll(".slide_item");
     // console.log(slideItems);
-       setInterval(()=>{
+   interval_value =    setInterval(()=>{
         
-        index++;
+        
         sliderParent.style.transform = `translateX(${-itemWidth * index}px)`;
         sliderParent.style.transition = "1s";
+        index++;
         
        },loopTime);
 }
+
+startSlideShow();
+
+
+sliderParent.addEventListener("transitionend",()=>{
+    slideItems = document.querySelectorAll(".slide_item");
+
+    if(slideItems[index].id === firstClone.id){
+        sliderParent.style.transition = "none";
+        index = 0;
+        sliderParent.style.transform = `translateX(${-slideWidth * index}px)`;
+    }
+});
+
+
+// stopping the auto play whenever an user hover an track of an items
+
+sliderParent.addEventListener("mouseover",()=>{
+    slideItems[index].style.cursor = "pointer";
+      clearInterval(interval_value);
+});
+
+sliderParent.addEventListener("mouseleave",()=>{
+    startSlideShow();
+});
 

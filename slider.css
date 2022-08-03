@@ -17,7 +17,7 @@
 .slide_container{
     width: 80vw;
     background-color: white;
-    
+    overflow: hidden;
     margin: 0 auto;
     border-radius: 5px;
     box-shadow: 0px 0px 10px black;
