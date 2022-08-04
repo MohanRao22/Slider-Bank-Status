@@ -2,11 +2,13 @@
 *,body{
     margin: 0;
     padding: 0;
+    /* background-color: rgb(232, 230, 230); */
+   font-family: sans-serif;
 }
 
 /* main - body container */
 .whole_wrapper_container{
-    background-color: rgb(232, 230, 230);
+   
     display: flex;
     align-items: center;
     height: 100vh;
@@ -16,19 +18,28 @@
 /* slider container */
 .slide_container{
     width: 80vw;
-    background-color: white;
+    background-color: #E0E5EC;
     overflow: hidden;
     margin: 0 auto;
     border-radius: 5px;
     box-shadow: 0px 0px 10px black;
+    z-index: 99;
+    
 }
 
 /* client image resize */
 
 .client_image{
     height: 100px;
-    width: 300px;
+    width: 100px;
     object-fit: cover;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0px 1px 20px #E0E5EC;
+    margin: 15px 0px;
+}
+.client_image_sec{
+    text-align: center;
 }
 
 
@@ -36,7 +47,7 @@
 #slides_path{
     display: flex;
     gap: 20px;
-   
+   padding: 30px 0;
 }
 
 /* slide item styling */
@@ -44,7 +55,10 @@
     border: 1px solid black;
     padding: 20px;
     margin: 15px 7px;
-    border-radius: 15px;
+    border-radius: 55px;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: rgb(252, 65, 233);
 }
 
 .cilent_representation{
@@ -62,12 +76,76 @@
 }
 
 
+.client_name h2{
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+.client_name h4{
+    color: #f9150d;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 7px 0px;
+}
 
 
 
 
+/* Star Ratings */
+
+/* .stars {
+    display: flex;
+  }
+  
+  .star {
+    flex: 25%;
+    margin: 50px 0;
+    position: relative;
+    display: inline-block;
+    color: red;
+    width: 0px;
+    height: 0px;
+    border-right: 50px solid transparent;
+    border-bottom: 33px solid gold;
+    border-left: 50px solid transparent;
+    transform: rotate(35deg);
+  }
+  .star:before {
+    border-bottom: 40px solid gold;
+    border-left: 15px solid transparent;
+    border-right: 25px solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -25px;
+    left: -30px;
+    display: block;
+    content: '';
+    transform: rotate(-32deg);
+  }
+  .star:after {
+    position: absolute;
+    display: block;
+    color: red;
+    top: 0;
+    left: -50px;
+    width: 0;
+    height: 0;
+    border-right: 50px solid transparent;
+    border-bottom: 35px solid gold;
+    border-left: 50px solid transparent;
+    transform: rotate(-70deg);
+    content: '';
+  } */
 
 
 
+.rating{
+    display: flex;
+    justify-content: center;
 
-
+}
+.star{
+    width: 30px;
+    height: 40px;
+}

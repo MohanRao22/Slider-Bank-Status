@@ -32,19 +32,39 @@ var feedBackContent = [
 
 
 // Mapping the content data through DOM Manipulation
+{/* <div class="stars">
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+</div> */}
+
+{/* <div class="cilent_representation">
+<div> <h4>${clientData.client}</h4></div>
+<div><p>${clientData.rating}</P></div>
+</div> */}
 
 var feedbackItemSection = feedBackContent.map((clientData) => {
     sliderParent.innerHTML += `<div class="slide_item">
-     <div class="client_image">
+     <div class="client_image_sec">
        <img src=${clientData.img} alt=${clientData.client} class="client_image"/>
+     </div>
+     <div class="client_name">
+     <h2>Henry Marshall</h2>
+     <h4 class="designation">CEO</h4>
      </div>
      <div class="client_message">
         <p><strong>${clientData.msg}</strong>
      </div>
-     <div class="cilent_representation">
-         <div> <h4>${clientData.client}</h4></div>
-         <div><p>${clientData.rating}</P></div>
-     </div>
+   
+  
+
+     <div class="rating">
+     <div class="star">🌟</div>
+     <div class="star">🌟</div>
+     <div class="star">🌟</div>
+     <div class="star">⭐</div>
+     <div class="star">⭐</div>
+</div>
    
     </div> `;
 })
@@ -60,12 +80,12 @@ console.log(slideItems);
 // cloning the first and last element 
 
 const firstClone = slideItems[0].cloneNode(true);
-const lastClone = slideItems[slideItems.length-1].cloneNode(true);
+const lastClone = slideItems[slideItems.length - 1].cloneNode(true);
 console.log(firstClone);
 console.log(lastClone);
 
-firstClone.setAttribute("id","first_clone");
-lastClone.setAttribute("id","last_clone");
+firstClone.setAttribute("id", "first_clone");
+lastClone.setAttribute("id", "last_clone");
 
 // cloning the first and last element 
 sliderParent.append(firstClone);
@@ -84,26 +104,26 @@ console.log(itemWidth);
 // start slide show function
 let interval_value;
 
-const startSlideShow = ()=>{
+const startSlideShow = () => {
     // slideItems = document.querySelectorAll(".slide_item");
     // console.log(slideItems);
-   interval_value =    setInterval(()=>{
-        
-        
+    interval_value = setInterval(() => {
+
+
         sliderParent.style.transform = `translateX(${-itemWidth * index}px)`;
         sliderParent.style.transition = "1s";
         index++;
-        
-       },loopTime);
+
+    }, loopTime);
 }
 
 startSlideShow();
 
 
-sliderParent.addEventListener("transitionend",()=>{
+sliderParent.addEventListener("transitionend", () => {
     slideItems = document.querySelectorAll(".slide_item");
 
-    if(slideItems[index].id === firstClone.id){
+    if (slideItems[index].id === firstClone.id) {
         sliderParent.style.transition = "none";
         index = 0;
         sliderParent.style.transform = `translateX(${-slideWidth * index}px)`;
@@ -113,12 +133,64 @@ sliderParent.addEventListener("transitionend",()=>{
 
 // stopping the auto play whenever an user hover an track of an items
 
-sliderParent.addEventListener("mouseover",()=>{
+sliderParent.addEventListener("mouseover", () => {
     slideItems[index].style.cursor = "pointer";
-      clearInterval(interval_value);
+    clearInterval(interval_value);
 });
 
-sliderParent.addEventListener("mouseleave",()=>{
+sliderParent.addEventListener("mouseleave", () => {
     startSlideShow();
 });
 
+
+
+
+/**
+ * Screen Animation effect
+ */
+
+var parentAnimator = document.querySelector(".whole_wrapper_container");
+
+
+var sc = setInterval(() => {
+
+    for (let incrementalIndex = 1; incrementalIndex <= 100; incrementalIndex++) {
+
+
+        var rand = Math.random();
+        rand = Math.floor(rand * 100);
+
+        var randHeight = Math.floor(Math.random() * 30);
+        var randWidth = Math.floor(Math.random() * 30);
+
+        // Randoms color generator
+
+        var red = Math.floor(Math.random() * 255);
+        var green = Math.floor(Math.random() * 255);
+        var blue = Math.floor(Math.random() * 255);
+
+
+        var box = document.createElement("div");
+        box.setAttribute("class", "box");
+
+        box.style.height = `${randHeight}px`;
+        box.style.width = `${randWidth}px`;
+        box.style.backgroundColor = `rgb(${red},${green},${blue})`;
+        box.style.position = "absolute";
+
+        box.style.left = Math.floor(Math.random() * (screen.width) - 100) + "px";
+        box.style.top = Math.floor(Math.random() * screen.height) + "px";
+        box.style.borderRadius = Math.floor(Math.random() * 100) + "%";
+        box.style.boxShadow = "2px 2px 10px pink";
+        box.style.transition = "1s";
+        document.body.append(box);
+
+    }
+
+    clear();
+}, 3000);
+
+
+function clear() {
+    document.querySelectorAll(".box").innerHTML = " ";
+}
