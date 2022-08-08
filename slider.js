@@ -6,42 +6,64 @@ var feedBackContent = [
     {
         client: "Citi Bank",
         rating: 4,
+        Designation : "CEO",
+        name : "Henry Marshall",
         msg: "We like to think that we offer exemplary quality and we are constantly examining our own practice to improve our programmes. However, in order to help you get a feel for the quality that we offer, here are just some of the comments and feedback from previous clients.",
-        img: "./images/citibank-logo.jpeg"
+        img: "./images/citi-pic.jpg"
     },
     {
         client: "Axis Bank",
         rating: 4.3,
-        msg: "I just wanted to thank you for your excellent inputs [on various courses] over the last 9 months, and more recently this morning. Your specific inputs have been insightful and have really helped me focus my approach to research leadership in my University. This has been invaluable to me and I will bring this knowledge with me when meeting with my research team in the future.",
-        img: "./images/axis-logo.png"
+        Designation : "Director General",
+        name : "Murugan",
+        msg: "I just wanted to thank you for your excellent inputs [on various courses] over the last 9 months, and more recently this morning. Your specific inputs have been insightful and have really helped me focus my approach to research leadership in my University. This has been invaluable to me.",
+        img: "./images/axis-pic.jpg"
     },
     {
         client: "Canara Bank",
         rating: 3.9,
-        msg: "I just wanted to thank you for your excellent inputs [on various courses] over the last 9 months, and more recently this morning. Your specific inputs have been insightful and have really helped me focus my approach to research leadership in my University. This has been invaluable to me and I will bring this knowledge with me when meeting with my research team in the future.",
-        img: "./images/canara-logo.png"
+        Designation : "President",
+        name : "Sakshi",
+        msg: "I just wanted to thank you for your excellent inputs [on various courses] over the last 9 months, and more recently this morning. Your specific inputs have been insightful and have really helped me focus my approach to research leadership in my University.",
+        img: "./images/canara-pic.png"
     },
     {
         client: "Indian Bank",
         rating: 4.3,
+        Designation : "Manager",
+        name : "Venkat Kumar",
         msg: "A big Thank You for the leadership session this afternoon. It was a great pleasure to listen to your talk - highly inspirational and perfectly pitched to the audience, as always. This has been invaluable to me and I will bring this knowledge with me when meeting with my research team in the future.",
-        img: "./images/indian-logo.png"
+        img: "./images/indian-pic.jpg"
+    },
+    {
+        client: "ICICI",
+        rating: 4.1,
+        Designation : "Manager",
+        name : "Sonali Kumari",
+        msg: "I used to spend hours writing creative copy, definitely worth the investment. I am completely blown away. Dude, your stuff is the bomb! I don't know what else to say.",
+        img: "./images/icici.jpg"
+    },
+    {
+        client: "LIC",
+        rating: 4,
+        Designation : "Director",
+        name : "Clementina",
+        msg: "I would be lost without LIC. It's just amazing. The best on the net!. In has completely surpassed our expectations. In was worth a fortune to my company. In is worth much more than I paid.",
+        img: "./images/lic-pic.jpg"
+    },
+    {
+        client: "DDCL",
+        rating: 4,
+        Designation : "Director",
+        name : "Clementina",
+        msg: "I would be lost without LIC. It's just amazing. The best on the net!. In has completely surpassed our expectations. In was worth a fortune to my company. In is worth much more than I paid.",
+        img: "./images/lic-pic.jpg"
     }
 
 ];
 
 
-// Mapping the content data through DOM Manipulation
-{/* <div class="stars">
-<div class="star"></div>
-<div class="star"></div>
-<div class="star"></div>
-</div> */}
 
-{/* <div class="cilent_representation">
-<div> <h4>${clientData.client}</h4></div>
-<div><p>${clientData.rating}</P></div>
-</div> */}
 
 var feedbackItemSection = feedBackContent.map((clientData) => {
     sliderParent.innerHTML += `<div class="slide_item">
@@ -49,8 +71,9 @@ var feedbackItemSection = feedBackContent.map((clientData) => {
        <img src=${clientData.img} alt=${clientData.client} class="client_image"/>
      </div>
      <div class="client_name">
-     <h2>Henry Marshall</h2>
-     <h4 class="designation">CEO</h4>
+     <h2>${clientData.name}</h2>
+     <h4 class="designation">${clientData.Designation}</h4>
+     <p>${clientData.client}</p>
      </div>
      <div class="client_message">
         <p><strong>${clientData.msg}</strong>
@@ -58,13 +81,7 @@ var feedbackItemSection = feedBackContent.map((clientData) => {
    
   
 
-     <div class="rating">
-     <div class="star">🌟</div>
-     <div class="star">🌟</div>
-     <div class="star">🌟</div>
-     <div class="star">⭐</div>
-     <div class="star">⭐</div>
-</div>
+
    
     </div> `;
 })
@@ -134,7 +151,7 @@ sliderParent.addEventListener("transitionend", () => {
 // stopping the auto play whenever an user hover an track of an items
 
 sliderParent.addEventListener("mouseover", () => {
-    slideItems[index].style.cursor = "pointer";
+    // slideItems.style.cursor = "pointer";
     clearInterval(interval_value);
 });
 
@@ -143,6 +160,20 @@ sliderParent.addEventListener("mouseleave", () => {
 });
 
 
+/**
+ * 
+ *  On dragging event ...
+ */
+var xValue = true;
+var yValue = true;
+
+ sliderParent.addEventListener("mouseup",(e)=>{
+    
+  xValue =   e.offsetX;
+yValue  = e.offsetY;
+    console.log(xValue);
+    console.log(yValue);
+});
 
 
 /**
@@ -154,7 +185,7 @@ var parentAnimator = document.querySelector(".whole_wrapper_container");
 
 var sc = setInterval(() => {
 
-    for (let incrementalIndex = 1; incrementalIndex <= 100; incrementalIndex++) {
+    for (let incrementalIndex = 1; incrementalIndex <= 50; incrementalIndex++) {
 
 
         var rand = Math.random();
@@ -178,13 +209,13 @@ var sc = setInterval(() => {
         box.style.backgroundColor = `rgb(${red},${green},${blue})`;
         box.style.position = "absolute";
 
-        box.style.left = Math.floor(Math.random() * (screen.width) - 100) + "px";
+        box.style.left = Math.floor(Math.random() * (screen.width) - 50) + "px";
         box.style.top = Math.floor(Math.random() * screen.height) + "px";
         box.style.borderRadius = Math.floor(Math.random() * 100) + "%";
         box.style.boxShadow = "2px 2px 10px pink";
         box.style.transition = "1s";
         document.body.append(box);
-
+        
     }
 
     clear();
@@ -192,5 +223,7 @@ var sc = setInterval(() => {
 
 
 function clear() {
-    document.querySelectorAll(".box").innerHTML = " ";
+    // document.querySelectorAll(".box").innerHTML = " ";
+    var bxes = document.getElementsByClassName(".box");
+    console.log(bxes);
 }
