@@ -235,8 +235,11 @@ yValue  = e.offsetY;
      console.log(bxes);
  }
 
-// Types of modes
-
+/**
+ * Types of modes
+     1) Dark
+     2) Light
+ *  */ 
 var lightMode = document.querySelector("#anime");
  var darkMode = document.querySelector("#anime2");
  lightMode.innerHTML = "Light Mode";
