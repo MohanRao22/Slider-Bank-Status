@@ -55,9 +55,9 @@ var feedBackContent = [
         client: "DDCL",
         rating: 4,
         Designation : "Director",
-        name : "Clementina",
+        name : "Santhosh",
         msg: "I would be lost without LIC. It's just amazing. The best on the net!. In has completely surpassed our expectations. In was worth a fortune to my company. In is worth much more than I paid.",
-        img: "./images/lic-pic.jpg"
+        img: "./images/ddc-pic.jpg"
     }
 
 ];
@@ -155,6 +155,13 @@ sliderParent.addEventListener("mouseover", () => {
     clearInterval(interval_value);
 });
 
+// slideItems.map((e)=>{
+//     e.addEventListener("mouseover", () => {
+//         e.style.cursor = "pointer";
+//         clearInterval(interval_value);
+// })
+// });
+
 sliderParent.addEventListener("mouseleave", () => {
     startSlideShow();
 });
@@ -180,50 +187,70 @@ yValue  = e.offsetY;
  * Screen Animation effect
  */
 
-var parentAnimator = document.querySelector(".whole_wrapper_container");
+ var parentAnimator = document.querySelector(".whole_wrapper_container");
 
 
-var sc = setInterval(() => {
+ var sc = setInterval(() => {
+ 
+     for (let incrementalIndex = 1; incrementalIndex <= 50; incrementalIndex++) {
+ 
+ 
+         var rand = Math.random();
+         rand = Math.floor(rand * 100);
+ 
+         var randHeight = Math.floor(Math.random() * 30);
+         var randWidth = Math.floor(Math.random() * 30);
+ 
+         // Randoms color generator
+ 
+         var red = Math.floor(Math.random() * 255);
+         var green = Math.floor(Math.random() * 255);
+         var blue = Math.floor(Math.random() * 255);
+ 
+ 
+         var box = document.createElement("div");
+         box.setAttribute("class", "box");
+ 
+         box.style.height = `${randHeight}px`;
+         box.style.width = `${randWidth}px`;
+         box.style.backgroundColor = `rgb(${red},${green},${blue})`;
+         box.style.position = "absolute";
+ 
+         box.style.left = Math.floor(Math.random() * (screen.width) - 50) + "px";
+         box.style.top = Math.floor(Math.random() * screen.height) + "px";
+         box.style.borderRadius = Math.floor(Math.random() * 100) + "%";
+         box.style.boxShadow = "2px 2px 10px pink";
+         box.style.transition = "1s";
+         document.body.append(box);
+         
+     }
+ 
+     clear();
+ }, 3000);
+ 
+ 
+ function clear() {
+     // document.querySelectorAll(".box").innerHTML = " ";
+     var bxes = document.getElementsByClassName(".box");
+     console.log(bxes);
+ }
 
-    for (let incrementalIndex = 1; incrementalIndex <= 50; incrementalIndex++) {
+// Types of modes
 
+var lightMode = document.querySelector("#anime");
+ var darkMode = document.querySelector("#anime2");
+ lightMode.innerHTML = "Light Mode";
+ darkMode.innerHTML = "Dark Mode";
 
-        var rand = Math.random();
-        rand = Math.floor(rand * 100);
+ lightMode.addEventListener("click",()=>{
+    document.querySelector('.whole_wrapper_container').style.backgroundColor = "#E0E5EC";
+    lightMode.style.display = "none";
+    darkMode.style.display = "block";
+    
+ });
 
-        var randHeight = Math.floor(Math.random() * 30);
-        var randWidth = Math.floor(Math.random() * 30);
-
-        // Randoms color generator
-
-        var red = Math.floor(Math.random() * 255);
-        var green = Math.floor(Math.random() * 255);
-        var blue = Math.floor(Math.random() * 255);
-
-
-        var box = document.createElement("div");
-        box.setAttribute("class", "box");
-
-        box.style.height = `${randHeight}px`;
-        box.style.width = `${randWidth}px`;
-        box.style.backgroundColor = `rgb(${red},${green},${blue})`;
-        box.style.position = "absolute";
-
-        box.style.left = Math.floor(Math.random() * (screen.width) - 50) + "px";
-        box.style.top = Math.floor(Math.random() * screen.height) + "px";
-        box.style.borderRadius = Math.floor(Math.random() * 100) + "%";
-        box.style.boxShadow = "2px 2px 10px pink";
-        box.style.transition = "1s";
-        document.body.append(box);
-        
-    }
-
-    clear();
-}, 3000);
-
-
-function clear() {
-    // document.querySelectorAll(".box").innerHTML = " ";
-    var bxes = document.getElementsByClassName(".box");
-    console.log(bxes);
-}
+ darkMode.addEventListener("click",()=>{
+    document.querySelector('.whole_wrapper_container').style.backgroundColor = "black";
+    darkMode.style.display = "none";
+    lightMode.style.display = "block";
+ });
